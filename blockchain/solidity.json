@@ -1,0 +1,210 @@
+{
+  "title": "EVM Security Checklist (Solidity Vyper Yul)",
+  "description": "EVM Security Checklist for Solidity, Vyper, and Yul smart contract development",
+  "items": [
+    {
+      "id": 1,
+      "item": "Default Visibility",
+      "description": "Functions and state variables visibility should be set explicitly. Visibility levels should be specified consciously.",
+      "severity": "High"
+    },
+    {
+      "id": 2,
+      "item": "Integer Overflow and Underflow",
+      "description": "If unchecked math is used all math operations should be safe from overflows and underflows.",
+      "severity": "High"
+    },
+    {
+      "id": 3,
+      "item": "Outdated Compiler Version",
+      "description": "It is recommended to use a recent version of the Solidity compiler.",
+      "severity": "Medium"
+    },
+    {
+      "id": 4,
+      "item": "Floating Pragma",
+      "description": "Contracts should be deployed with the same compiler version and flags that they have been tested thoroughly.",
+      "severity": "Medium"
+    },
+    {
+      "id": 5,
+      "item": "Unchecked Call Return Value",
+      "description": "The return value of a message call should be checked.",
+      "severity": "High"
+    },
+    {
+      "id": 6,
+      "item": "Access Control & Authorization",
+      "description": "Ownership takeover should not be possible. All crucial functions should be protected. Users could not affect data of others.",
+      "severity": "High"
+    },
+    {
+      "id": 7,
+      "item": "SELFDESTRUCT Instruction",
+      "description": "The contract should not be self-destructible while it has funds belonging to users.",
+      "severity": "High"
+    },
+    {
+      "id": 8,
+      "item": "Check-Effect-Interaction",
+      "description": "Check-Effect-Interaction pattern should be followed if the code performs ANY external call.",
+      "severity": "High"
+    },
+    {
+      "id": 9,
+      "item": "Assert Violation",
+      "description": "Properly functioning code should never reach a failing assert statement.",
+      "severity": "High"
+    },
+    {
+      "id": 10,
+      "item": "Deprecated Solidity Functions",
+      "description": "Deprecated built-in functions should never be used.",
+      "severity": "Medium"
+    },
+    {
+      "id": 11,
+      "item": "Delegatecall to Untrusted Callee",
+      "description": "Delegatecalls should only be allowed to trusted addresses.",
+      "severity": "High"
+    },
+    {
+      "id": 12,
+      "item": "DoS (Denial of Service)",
+      "description": "Execution of the code should never be blocked by a specific contract state unless it is required.",
+      "severity": "High"
+    },
+    {
+      "id": 13,
+      "item": "Race Conditions",
+      "description": "Race Conditions and Transactions Order Dependency should not be possible.",
+      "severity": "High"
+    },
+    {
+      "id": 14,
+      "item": "Authorization through tx.origin",
+      "description": "tx.origin should not be used for authorization.",
+      "severity": "High"
+    },
+    {
+      "id": 15,
+      "item": "Block values as a proxy for time",
+      "description": "Block numbers should not be used for time calculations.",
+      "severity": "Medium"
+    },
+    {
+      "id": 16,
+      "item": "Signature Unique Id",
+      "description": "Signed messages should always have a unique id. A transaction hash should not be used as a unique id. Chain identifier should always be used.",
+      "severity": "High"
+    },
+    {
+      "id": 17,
+      "item": "Shadowing State Variable",
+      "description": "State variables should not be shadowed.",
+      "severity": "Medium"
+    },
+    {
+      "id": 18,
+      "item": "Weak Sources of Randomness",
+      "description": "Random values should never be generated from Chain Attributes or be predictable.",
+      "severity": "High"
+    },
+    {
+      "id": 19,
+      "item": "Incorrect Inheritance Order",
+      "description": "When inheriting multiple contracts especially if they have identical functions a developer should carefully specify inheritance in the correct order.",
+      "severity": "Medium"
+    },
+    {
+      "id": 20,
+      "item": "Calls Only to Trusted Addresses",
+      "description": "All external calls should be performed only to trusted addresses.",
+      "severity": "High"
+    },
+    {
+      "id": 21,
+      "item": "Presence of unused variables",
+      "description": "The code should not contain unused variables if this is not justified by design.",
+      "severity": "Optional"
+    },
+    {
+      "id": 22,
+      "item": "EIP standards violation",
+      "description": "EIP standards should not be violated.",
+      "severity": "Medium"
+    },
+    {
+      "id": 23,
+      "item": "Assets integrity",
+      "description": "Funds are protected and cannot be withdrawn without proper permissions or be locked on the contract.",
+      "severity": "High"
+    },
+    {
+      "id": 24,
+      "item": "User Balances manipulation",
+      "description": "Contract owners or any other third party should not be able to access funds belonging to users.",
+      "severity": "High"
+    },
+    {
+      "id": 25,
+      "item": "Data Consistency",
+      "description": "Smart contract data should be consistent all over the data flow.",
+      "severity": "High"
+    },
+    {
+      "id": 26,
+      "item": "Flashloan Attack",
+      "description": "When working with exchange rates they should be received from a trusted source and not be vulnerable to short-term rate changes that can be achieved by using flash loans. Oracles should be used.",
+      "severity": "High"
+    },
+    {
+      "id": 27,
+      "item": "Token Supply manipulation",
+      "description": "Tokens can be minted only according to rules specified in a whitepaper or any other documentation provided by the customer.",
+      "severity": "High"
+    },
+    {
+      "id": 28,
+      "item": "Gas Limit and Loops",
+      "description": "Transaction execution costs should not depend dramatically on the amount of data stored on the contract. There should not be any cases when execution fails due to the block gas limit.",
+      "severity": "Medium"
+    },
+    {
+      "id": 29,
+      "item": "Style guide violation",
+      "description": "Style guides and best practices should be followed.",
+      "severity": "Optional"
+    },
+    {
+      "id": 30,
+      "item": "Requirements Compliance",
+      "description": "The code should be compliant with the requirements provided by the Customer.",
+      "severity": "Medium"
+    },
+    {
+      "id": 31,
+      "item": "Environment Consistency",
+      "description": "The project should contain a configured development environment with a comprehensive description of how to compile build and deploy the code.",
+      "severity": "Medium"
+    },
+    {
+      "id": 32,
+      "item": "Secure Oracles Usage",
+      "description": "The code should have the ability to pause specific data feeds that it relies on. This should be done to protect a contract from compromised oracles.",
+      "severity": "High"
+    },
+    {
+      "id": 33,
+      "item": "Tests Coverage",
+      "description": "The code should be covered with unit tests. Test coverage should be 100% with both negative and positive cases covered. Usage of contracts by multiple users should be tested.",
+      "severity": "Medium"
+    },
+    {
+      "id": 34,
+      "item": "Stable Imports",
+      "description": "The code should not reference draft contracts that may be changed in the future.",
+      "severity": "Medium"
+    }
+  ]
+}

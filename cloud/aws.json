@@ -1,0 +1,354 @@
+{
+  "title": "AWS Security Checklist",
+  "description": "AWS Security Checklist Detailed",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Identity & Access Management (IAM)",
+      "description": "Identity and access management controls for AWS resources and services",
+      "items": [
+        {
+          "id": "1.1",
+          "item": "Enable Multi-Factor Authentication (MFA) for all IAM users",
+          "severity": "High"
+        },
+        {
+          "id": "1.2",
+          "item": "Use IAM roles for EC2 instances instead of hardcoding credentials",
+          "severity": "High"
+        },
+        {
+          "id": "1.3",
+          "item": "Enforce the Principle of Least Privilege when assigning policies",
+          "severity": "High"
+        },
+        {
+          "id": "1.4",
+          "item": "Use IAM Groups to assign permissions rather than directly to individual users",
+          "severity": "Medium"
+        },
+        {
+          "id": "1.5",
+          "item": "Rotate access keys regularly, if they must be used",
+          "severity": "Medium"
+        },
+        {
+          "id": "1.6",
+          "item": "Delete unused IAM users and access keys",
+          "severity": "Medium"
+        },
+        {
+          "id": "1.7",
+          "item": "Create and use separate AWS accounts for production and development environments",
+          "severity": "High"
+        },
+        {
+          "id": "1.8",
+          "item": "Set up strong password policies for IAM users",
+          "severity": "Medium"
+        },
+        {
+          "id": "1.9",
+          "item": "Use AWS Organizations for managing multiple accounts with Service Control Policies (SCPs)",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "Logging & Monitoring",
+      "description": "Comprehensive logging and monitoring solutions for AWS security",
+      "items": [
+        {
+          "id": "2.1",
+          "item": "Enable AWS CloudTrail to log all API activity in the AWS account",
+          "severity": "High"
+        },
+        {
+          "id": "2.2",
+          "item": "Ensure CloudTrail logs are encrypted and stored in S3",
+          "severity": "High"
+        },
+        {
+          "id": "2.3",
+          "item": "Enable log file validation in CloudTrail to detect tampering",
+          "severity": "High"
+        },
+        {
+          "id": "2.4",
+          "item": "Enable Amazon CloudWatch for real-time monitoring of performance metrics and logs",
+          "severity": "High"
+        },
+        {
+          "id": "2.5",
+          "item": "Set up CloudWatch Alarms for key security metrics (e.g., failed login attempts, CPU usage spikes)",
+          "severity": "High"
+        },
+        {
+          "id": "2.6",
+          "item": "Enable AWS Config to track resource configurations and detect drift",
+          "severity": "Medium"
+        },
+        {
+          "id": "2.7",
+          "item": "Enable AWS GuardDuty for continuous monitoring for malicious activity",
+          "severity": "High"
+        },
+        {
+          "id": "2.8",
+          "item": "Regularly review CloudTrail and CloudWatch logs for suspicious activity",
+          "severity": "Medium"
+        },
+        {
+          "id": "2.9",
+          "item": "Enable VPC Flow Logs to capture information about IP traffic going to and from network interfaces in your VPC",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Data Security",
+      "description": "Data protection and encryption controls for AWS resources",
+      "items": [
+        {
+          "id": "3.1",
+          "item": "Enable server-side encryption for S3 buckets (SSES3, SSE-KMS, or SSE-C)",
+          "severity": "High"
+        },
+        {
+          "id": "3.2",
+          "item": "Use AWS Key Management Service (KMS) to manage encryption keys for data at rest",
+          "severity": "High"
+        },
+        {
+          "id": "3.3",
+          "item": "Ensure that all sensitive data in transit is encrypted using TLS/SSL",
+          "severity": "High"
+        },
+        {
+          "id": "3.4",
+          "item": "Restrict access to S3 buckets by setting up correct bucket policies",
+          "severity": "High"
+        },
+        {
+          "id": "3.5",
+          "item": "Enable S3 bucket versioning and logging to track changes and access",
+          "severity": "Medium"
+        },
+        {
+          "id": "3.6",
+          "item": "Enable RDS encryption for data at rest",
+          "severity": "High"
+        },
+        {
+          "id": "3.7",
+          "item": "Use EBS encryption for EC2 volumes where sensitive data is stored",
+          "severity": "High"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "Network Security",
+      "description": "Network security controls and traffic management for AWS resources",
+      "items": [
+        {
+          "id": "4.1",
+          "item": "Use AWS VPC (Virtual Private Cloud) to isolate resources",
+          "severity": "High"
+        },
+        {
+          "id": "4.2",
+          "item": "Restrict inbound and outbound traffic using Security Groups",
+          "severity": "High"
+        },
+        {
+          "id": "4.3",
+          "item": "Ensure that Security Groups follow least privilege",
+          "severity": "High"
+        },
+        {
+          "id": "4.4",
+          "item": "Use Network Access Control Lists (NACLs) for an additional layer of network security",
+          "severity": "Medium"
+        },
+        {
+          "id": "4.5",
+          "item": "Use VPC Endpoints to privately access AWS services without exposing traffic to the public internet",
+          "severity": "Medium"
+        },
+        {
+          "id": "4.6",
+          "item": "Enable AWS WAF (Web Application Firewall) to protect web applications from common attacks",
+          "severity": "High"
+        },
+        {
+          "id": "4.7",
+          "item": "Use VPC Peering or AWS Transit Gateway for secure communication between VPCs",
+          "severity": "Medium"
+        },
+        {
+          "id": "4.8",
+          "item": "Deploy VPN or Direct Connect to secure on-premise connections to AWS",
+          "severity": "High"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "Application Security",
+      "description": "Application-level security controls and development security practices",
+      "items": [
+        {
+          "id": "5.1",
+          "item": "Ensure applications use HTTPS to encrypt data in transit",
+          "severity": "High"
+        },
+        {
+          "id": "5.2",
+          "item": "Implement input validation to prevent injection attacks",
+          "severity": "High"
+        },
+        {
+          "id": "5.3",
+          "item": "Use AWS Secrets Manager to securely store API keys, passwords, etc.",
+          "severity": "High"
+        },
+        {
+          "id": "5.4",
+          "item": "Use AWS Lambda or EC2 with restricted IAM permissions for backend processing",
+          "severity": "Medium"
+        },
+        {
+          "id": "5.5",
+          "item": "Set up AWS Shield for DDoS protection for web applications",
+          "severity": "High"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "Compliance & Governance",
+      "description": "Compliance controls and governance frameworks for AWS environments",
+      "items": [
+        {
+          "id": "6.1",
+          "item": "Enable AWS Security Hub to get a comprehensive view of your security posture",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.2",
+          "item": "Use AWS Trusted Advisor for security and cost optimization recommendations",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.3",
+          "item": "Enable AWS Config Rules to ensure compliance",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.4",
+          "item": "Conduct regular security audits and risk assessments",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.5",
+          "item": "Use AWS Artifact for managing compliance-related documents",
+          "severity": "Optional"
+        },
+        {
+          "id": "6.6",
+          "item": "Implement automated security frameworks (e.g., NIST, PCI-DSS, ISO 27001) where applicable",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "Incident Response",
+      "description": "Incident response and disaster recovery procedures for AWS",
+      "items": [
+        {
+          "id": "7.1",
+          "item": "Implement an incident response plan and train staff regularly",
+          "severity": "High"
+        },
+        {
+          "id": "7.2",
+          "item": "Enable AWS CloudFormation StackSets for disaster recovery",
+          "severity": "High"
+        },
+        {
+          "id": "7.3",
+          "item": "Create snapshots and backups regularly",
+          "severity": "High"
+        },
+        {
+          "id": "7.4",
+          "item": "Configure AWS CloudWatch Events and AWS Lambda for automated response actions",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "Security Automation",
+      "description": "Automation of security controls and infrastructure management",
+      "items": [
+        {
+          "id": "8.1",
+          "item": "Use AWS CloudFormation or Terraform to automate infrastructure as code securely",
+          "severity": "Medium"
+        },
+        {
+          "id": "8.2",
+          "item": "Automate incident response workflows using AWS Lambda",
+          "severity": "Medium"
+        },
+        {
+          "id": "8.3",
+          "item": "Create automatic backups of your resources (e.g., AWS Backup)",
+          "severity": "Medium"
+        },
+        {
+          "id": "8.4",
+          "item": "Use AWS Systems Manager Patch Manager to automate OS and application patching",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "Regular Maintenance",
+      "description": "Ongoing maintenance and review procedures for AWS security",
+      "items": [
+        {
+          "id": "9.1",
+          "item": "Regularly review and update IAM roles and policies",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.2",
+          "item": "Audit unused resources and delete them",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.3",
+          "item": "Apply security patches promptly",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.4",
+          "item": "Review and update Security Groups and NACLs",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.5",
+          "item": "Regularly review AWS Trusted Advisor security checks",
+          "severity": "Medium"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+{
+  "title": "Azure Security Checklist",
+  "description": "Microsoft Azure Security Checklist Detailed",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Identity & Access Management (IAM)",
+      "description": "Identity and access management controls for Azure resources and services",
+      "items": [
+        {
+          "id": "1.1",
+          "item": "Enable Multi-Factor Authentication (MFA) for all users, especially for Azure AD administrators",
+          "severity": "High"
+        },
+        {
+          "id": "1.2",
+          "item": "Use Azure Active Directory (Azure AD) for centralized identity and access management",
+          "severity": "High"
+        },
+        {
+          "id": "1.3",
+          "item": "Implement Role-Based Access Control (RBAC) to assign the least privilege access to resources",
+          "severity": "High"
+        },
+        {
+          "id": "1.4",
+          "item": "Regularly audit and remove unused accounts and access rights",
+          "severity": "Medium"
+        },
+        {
+          "id": "1.5",
+          "item": "Use Conditional Access Policies to enforce access controls based on the user's location, device, and risk level",
+          "severity": "High"
+        },
+        {
+          "id": "1.6",
+          "item": "Use Azure AD Privileged Identity Management (PIM) to manage, control, and monitor access to critical Azure resources",
+          "severity": "High"
+        },
+        {
+          "id": "1.7",
+          "item": "Implement strong password policies and enforce password expiration policies",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "Logging & Monitoring",
+      "description": "Comprehensive logging and monitoring solutions for Azure security",
+      "items": [
+        {
+          "id": "2.1",
+          "item": "Enable Azure Activity Logs to track changes to resources and management operations",
+          "severity": "High"
+        },
+        {
+          "id": "2.2",
+          "item": "Use Azure Monitor and Log Analytics to centralize logs and metrics",
+          "severity": "High"
+        },
+        {
+          "id": "2.3",
+          "item": "Enable Azure Security Center for security assessments and recommendations",
+          "severity": "High"
+        },
+        {
+          "id": "2.4",
+          "item": "Implement Azure Sentinel for SIEM and automated threat detection",
+          "severity": "High"
+        },
+        {
+          "id": "2.5",
+          "item": "Configure Azure Policy to enforce compliance and track issues",
+          "severity": "Medium"
+        },
+        {
+          "id": "2.6",
+          "item": "Enable Diagnostics Logging for all services (e.g., Azure SQL DB, VMs) in a centralized location",
+          "severity": "Medium"
+        },
+        {
+          "id": "2.7",
+          "item": "Set up Alerts and Notifications using Azure Monitor for suspicious activities (failed logins, unusual network traffic)",
+          "severity": "High"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Data Security",
+      "description": "Data protection and encryption controls for Azure resources",
+      "items": [
+        {
+          "id": "3.1",
+          "item": "Encrypt Data at Rest using Azure Storage Service Encryption (SSE) and Azure Disk Encryption for VMs",
+          "severity": "High"
+        },
+        {
+          "id": "3.2",
+          "item": "Encrypt Data in Transit by enforcing TLS/SSL for communication",
+          "severity": "High"
+        },
+        {
+          "id": "3.3",
+          "item": "Use Azure Key Vault to securely manage encryption keys, certificates, and secrets",
+          "severity": "High"
+        },
+        {
+          "id": "3.4",
+          "item": "Implement Azure Disk Encryption for VMs and managed disks",
+          "severity": "High"
+        },
+        {
+          "id": "3.5",
+          "item": "Ensure Azure SQL Database Encryption is enabled (Transparent Data Encryption - TDE)",
+          "severity": "High"
+        },
+        {
+          "id": "3.6",
+          "item": "Enable Azure Storage Account Firewall to restrict access",
+          "severity": "Medium"
+        },
+        {
+          "id": "3.7",
+          "item": "Enable Azure Backup and Azure Site Recovery for disaster recovery and data protection",
+          "severity": "High"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "Network Security",
+      "description": "Network security controls and traffic management for Azure resources",
+      "items": [
+        {
+          "id": "4.1",
+          "item": "Use Azure VNets to isolate resources and control traffic",
+          "severity": "High"
+        },
+        {
+          "id": "4.2",
+          "item": "Implement Network Security Groups (NSGs) to control traffic at subnet and NIC level",
+          "severity": "High"
+        },
+        {
+          "id": "4.3",
+          "item": "Use Azure Firewall for network security and protection",
+          "severity": "High"
+        },
+        {
+          "id": "4.4",
+          "item": "Configure Web Application Firewall (WAF) with Azure Application Gateway",
+          "severity": "High"
+        },
+        {
+          "id": "4.5",
+          "item": "Restrict inbound traffic using Just-in-Time VM Access",
+          "severity": "Medium"
+        },
+        {
+          "id": "4.6",
+          "item": "Use Azure VPN Gateway or ExpressRoute for secure communication between on-premise and Azure",
+          "severity": "High"
+        },
+        {
+          "id": "4.7",
+          "item": "Enable DDoS Protection with Azure DDoS Protection Standard for critical applications",
+          "severity": "High"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "Application Security",
+      "description": "Application-level security controls and development security practices",
+      "items": [
+        {
+          "id": "5.1",
+          "item": "Enable Azure Security Center for DevOps monitoring",
+          "severity": "Medium"
+        },
+        {
+          "id": "5.2",
+          "item": "Use Azure App Service Environment (ASE) for secure hosting",
+          "severity": "Medium"
+        },
+        {
+          "id": "5.3",
+          "item": "Enable Azure WAF for web application protection",
+          "severity": "High"
+        },
+        {
+          "id": "5.4",
+          "item": "Secure APIs using Azure API Management (OAuth2 and others)",
+          "severity": "High"
+        },
+        {
+          "id": "5.5",
+          "item": "Automate security scans with Azure DevOps/GitHub Actions (code/static scan, dependency scanning)",
+          "severity": "Medium"
+        },
+        {
+          "id": "5.6",
+          "item": "Ensure Azure Functions and Logic Apps follow least privilege principles",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "Compliance & Governance",
+      "description": "Compliance controls and governance frameworks for Azure environments",
+      "items": [
+        {
+          "id": "6.1",
+          "item": "Enable Azure Security Center and address high-severity recommendations",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.2",
+          "item": "Use Azure Policy to enforce security and compliance",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.3",
+          "item": "Review security baselines with Azure Blueprints",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.4",
+          "item": "Use Azure Cost Management for monitoring usage and costs",
+          "severity": "Optional"
+        },
+        {
+          "id": "6.5",
+          "item": "Implement Azure AD Identity Protection for identity-based risks",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.6",
+          "item": "Use Azure Compliance Manager for managing regulatory compliance",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "Incident Response",
+      "description": "Incident response and disaster recovery procedures for Azure",
+      "items": [
+        {
+          "id": "7.1",
+          "item": "Set up incident response with Azure Sentinel",
+          "severity": "High"
+        },
+        {
+          "id": "7.2",
+          "item": "Enable Azure Monitor Alerts for security incident notification",
+          "severity": "High"
+        },
+        {
+          "id": "7.3",
+          "item": "Use Azure Automation Runbooks for automated threat response",
+          "severity": "Medium"
+        },
+        {
+          "id": "7.4",
+          "item": "Enable backup and disaster recovery with Azure Site Recovery and Azure Backup",
+          "severity": "High"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "Security Automation",
+      "description": "Automation of security controls and infrastructure management",
+      "items": [
+        {
+          "id": "8.1",
+          "item": "Automate infrastructure and security with ARM Templates or Terraform",
+          "severity": "Medium"
+        },
+        {
+          "id": "8.2",
+          "item": "Use Azure Automation/Logic Apps for security responses",
+          "severity": "Medium"
+        },
+        {
+          "id": "8.3",
+          "item": "Enable auto-healing in Azure Security Center",
+          "severity": "Medium"
+        },
+        {
+          "id": "8.4",
+          "item": "Automate patching with Azure Update Management",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "Regular Maintenance",
+      "description": "Ongoing maintenance and review procedures for Azure security",
+      "items": [
+        {
+          "id": "9.1",
+          "item": "Regularly review/update RBAC roles and permissions",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.2",
+          "item": "Review Azure Security Center and Advisor recommendations",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.3",
+          "item": "Test regular backups and recovery",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.4",
+          "item": "Review NSGs to avoid unnecessary open access",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.5",
+          "item": "Patch VMs and applications using Azure Update Management",
+          "severity": "Medium"
+        }
+      ]
+    }
+  ]
+}
