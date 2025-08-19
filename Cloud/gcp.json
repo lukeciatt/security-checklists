@@ -1,0 +1,344 @@
+{
+  "title": "GCP Security Checklist",
+  "description": "Google Cloud Platform Security Checklist Detailed",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Identity & Access Management (IAM)",
+      "description": "Identity and access management controls for GCP resources and services",
+      "items": [
+        {
+          "id": "1.1",
+          "item": "Enable Multi-Factor Authentication (MFA) for all users, especially those with elevated permissions",
+          "severity": "High"
+        },
+        {
+          "id": "1.2",
+          "item": "Use Google Cloud Identity or Google Workspace for centralized identity management",
+          "severity": "High"
+        },
+        {
+          "id": "1.3",
+          "item": "Apply the Principle of Least Privilege (PoLP) to assign the minimum permissions necessary for each user or service",
+          "severity": "High"
+        },
+        {
+          "id": "1.4",
+          "item": "Use Predefined and Custom Roles in GCP IAM instead of assigning the \"Owner\" role",
+          "severity": "High"
+        },
+        {
+          "id": "1.5",
+          "item": "Regularly audit and remove unused or inactive user accounts and roles",
+          "severity": "Medium"
+        },
+        {
+          "id": "1.6",
+          "item": "Enable service accounts and avoid using user credentials for application authentication",
+          "severity": "High"
+        },
+        {
+          "id": "1.7",
+          "item": "Use Identity-Aware Proxy (IAP) to control access to cloud applications based on identity and context",
+          "severity": "High"
+        },
+        {
+          "id": "1.8",
+          "item": "Implement VPC Service Controls to restrict data exfiltration from sensitive resources",
+          "severity": "High"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "Logging & Monitoring",
+      "description": "Comprehensive logging and monitoring solutions for GCP security",
+      "items": [
+        {
+          "id": "2.1",
+          "item": "Enable Cloud Audit Logs for all resources to track access and changes to GCP services",
+          "severity": "High"
+        },
+        {
+          "id": "2.2",
+          "item": "Set up Cloud Monitoring for real-time monitoring of resources and performance metrics",
+          "severity": "High"
+        },
+        {
+          "id": "2.3",
+          "item": "Enable Cloud Logging to store and analyze logs for network traffic, security events, and system changes",
+          "severity": "High"
+        },
+        {
+          "id": "2.4",
+          "item": "Use Cloud Security Command Center (SCC) for a centralized view of your GCP security posture",
+          "severity": "High"
+        },
+        {
+          "id": "2.5",
+          "item": "Configure Cloud Monitoring Alerts for abnormal activity, such as spikes in traffic or resource usage",
+          "severity": "High"
+        },
+        {
+          "id": "2.6",
+          "item": "Enable VPC Flow Logs to monitor network traffic for suspicious activity",
+          "severity": "Medium"
+        },
+        {
+          "id": "2.7",
+          "item": "Ensure Logs are centralized in a secure location, like Google Cloud Storage or BigQuery for further analysis",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Data Security",
+      "description": "Data protection and encryption controls for GCP resources",
+      "items": [
+        {
+          "id": "3.1",
+          "item": "Use Cloud KMS (Key Management Service) to manage encryption keys for sensitive data",
+          "severity": "High"
+        },
+        {
+          "id": "3.2",
+          "item": "Ensure all data at rest is encrypted using Google-managed encryption or Customer-managed encryption keys (CMEK)",
+          "severity": "High"
+        },
+        {
+          "id": "3.3",
+          "item": "Enable TLS/SSL encryption for data in transit between services",
+          "severity": "High"
+        },
+        {
+          "id": "3.4",
+          "item": "Set up Cloud Storage Object Versioning to protect against accidental data deletion",
+          "severity": "Medium"
+        },
+        {
+          "id": "3.5",
+          "item": "Use Bucket Policies and IAM to restrict access to Cloud Storage",
+          "severity": "High"
+        },
+        {
+          "id": "3.6",
+          "item": "Enable Cloud DLP (Data Loss Prevention) to scan for sensitive data (PII, PHI, etc.) in structured and unstructured data",
+          "severity": "Medium"
+        },
+        {
+          "id": "3.7",
+          "item": "Enable Google Cloud Armor to protect against DDoS attacks and secure applications at the edge",
+          "severity": "High"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "Network Security",
+      "description": "Network security controls and traffic management for GCP resources",
+      "items": [
+        {
+          "id": "4.1",
+          "item": "Use VPC networks to isolate resources and apply security policies (e.g., segmentation)",
+          "severity": "High"
+        },
+        {
+          "id": "4.2",
+          "item": "Configure Firewall Rules to limit inbound and outbound traffic to only what is necessary",
+          "severity": "High"
+        },
+        {
+          "id": "4.3",
+          "item": "Use Private Google Access to keep traffic internal to Google's network and avoid exposure to the public internet",
+          "severity": "Medium"
+        },
+        {
+          "id": "4.4",
+          "item": "Use Cloud Armor to protect applications from common web-based attacks (e.g., SQL injection, XSS)",
+          "severity": "High"
+        },
+        {
+          "id": "4.5",
+          "item": "Implement Virtual Private Network (VPN) or Cloud Interconnect for secure connections between GCP and on-premises environments",
+          "severity": "High"
+        },
+        {
+          "id": "4.6",
+          "item": "Enable DNS Security (DNSSEC) for Cloud DNS to ensure the integrity of DNS records",
+          "severity": "Medium"
+        },
+        {
+          "id": "4.7",
+          "item": "Enable VPC Service Controls to create perimeters that prevent data exfiltration to unauthorized users or services",
+          "severity": "High"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "Application Security",
+      "description": "Application-level security controls and development security practices",
+      "items": [
+        {
+          "id": "5.1",
+          "item": "Enable Cloud Identity-Aware Proxy (IAP) to secure access to web applications",
+          "severity": "High"
+        },
+        {
+          "id": "5.2",
+          "item": "Use Google Cloud Armor to protect web applications against common threats (e.g., OWASP Top 10)",
+          "severity": "High"
+        },
+        {
+          "id": "5.3",
+          "item": "Enable reCAPTCHA Enterprise to prevent bot attacks on your applications",
+          "severity": "Medium"
+        },
+        {
+          "id": "5.4",
+          "item": "Scan code repositories for vulnerabilities using Container Scanning and Security Health Analytics",
+          "severity": "Medium"
+        },
+        {
+          "id": "5.5",
+          "item": "Use Binary Authorization to enforce security policies on containerized applications before deployment",
+          "severity": "Medium"
+        },
+        {
+          "id": "5.6",
+          "item": "Ensure API Security by using Google Cloud Endpoints with proper authentication and rate limiting",
+          "severity": "High"
+        },
+        {
+          "id": "5.7",
+          "item": "Utilize Cloud Build to integrate security checks into the DevOps pipeline (CI/CD)",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "Compliance & Governance",
+      "description": "Compliance controls and governance frameworks for GCP environments",
+      "items": [
+        {
+          "id": "6.1",
+          "item": "Enable Cloud Security Command Center (SCC) for centralized security monitoring and alerts",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.2",
+          "item": "Use Google Cloud's Policy Intelligence tools to recommend least privilege policies and improve IAM configurations",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.3",
+          "item": "Enable Google Cloud Policy Analyzer to assess and analyze policy violations",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.4",
+          "item": "Use Cloud Compliance Reports and Google Cloud Artifact to manage compliance with regulations (e.g., GDPR, HIPAA, PCI-DSS)",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.5",
+          "item": "Set up Organization Policies to enforce governance controls, such as restricting specific locations for resource deployment",
+          "severity": "Medium"
+        },
+        {
+          "id": "6.6",
+          "item": "Implement Audit Policies and regularly review logs for anomalies or suspicious behavior",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "Incident Response",
+      "description": "Incident response and disaster recovery procedures for GCP",
+      "items": [
+        {
+          "id": "7.1",
+          "item": "Implement a comprehensive incident response plan using Cloud SCC and Cloud Logging to detect, investigate, and respond to security incidents",
+          "severity": "High"
+        },
+        {
+          "id": "7.2",
+          "item": "Set up Cloud Monitoring Alerts for critical security and performance events",
+          "severity": "High"
+        },
+        {
+          "id": "7.3",
+          "item": "Use Cloud Functions and Cloud Pub/Sub to automate responses to incidents",
+          "severity": "Medium"
+        },
+        {
+          "id": "7.4",
+          "item": "Regularly test incident response procedures through simulation and drills",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "Security Automation",
+      "description": "Automation of security controls and infrastructure management",
+      "items": [
+        {
+          "id": "8.1",
+          "item": "Automate security checks and resource provisioning using Terraform or Deployment Manager",
+          "severity": "Medium"
+        },
+        {
+          "id": "8.2",
+          "item": "Use Cloud Functions to automate responses to security events, such as disabling compromised accounts or shutting down vulnerable resources",
+          "severity": "Medium"
+        },
+        {
+          "id": "8.3",
+          "item": "Automate patch management using OS Patch Management for VMs and use OS configuration management to maintain consistent environments",
+          "severity": "Medium"
+        },
+        {
+          "id": "8.4",
+          "item": "Implement Security Command Center Automation to automatically trigger alerts and remediation workflows",
+          "severity": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "Regular Maintenance",
+      "description": "Ongoing maintenance and review procedures for GCP security",
+      "items": [
+        {
+          "id": "9.1",
+          "item": "Regularly review and update IAM roles and permissions to ensure they align with current business needs",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.2",
+          "item": "Patch and update your virtual machines (VMs) and applications regularly using OS patch management",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.3",
+          "item": "Regularly review firewall rules, VPC configurations, and network settings",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.4",
+          "item": "Use Forseti Security to regularly scan your GCP environment for security misconfigurations",
+          "severity": "Medium"
+        },
+        {
+          "id": "9.5",
+          "item": "Use Cloud Profiler and Cloud Debugger to monitor and improve the performance of applications and services",
+          "severity": "Optional"
+        }
+      ]
+    }
+  ]
+}
