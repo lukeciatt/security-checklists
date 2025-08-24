@@ -5,56 +5,31 @@
     {
       "id": 1,
       "category": "General Blockchain Application Considerations",
-      "description": "Fundamental security considerations for blockchain applications",
+      "description": "Common blockchain issues applicable to Cosmos-based applications",
       "items": [
         {
           "id": "1.1",
-          "item": "Determinism: Ensure all transaction-processing logic is deterministic. No use of time-based, random, or external state in transaction logic.",
+          "item": "Ensure transaction-processing logic is deterministic across nodes.",
           "severity": "High"
         },
         {
           "id": "1.2",
-          "item": "Determinism: Avoid floating-point calculations; use integer math instead.",
+          "item": "Avoid introducing non-determinism in consensus-critical code.",
           "severity": "High"
         },
         {
           "id": "1.3",
-          "item": "Determinism: Avoid map or unordered data structure iteration in state-changing code.",
+          "item": "Replace panics with explicit error handling and logging.",
           "severity": "High"
         },
         {
           "id": "1.4",
-          "item": "Determinism: Review use of non-deterministic standard library functions.",
-          "severity": "Medium"
+          "item": "Review for hidden panics from library calls (e.g., unwrap/expect, divide-by-zero, out-of-range indexing).",
+          "severity": "High"
         },
         {
           "id": "1.5",
-          "item": "Panic Handling: Never use explicit panic calls for error handling.",
-          "severity": "High"
-        },
-        {
-          "id": "1.6",
-          "item": "Panic Handling: ALWAYS log errors and handle edge cases gracefully, especially in Rust's unwrap()/expect() and Go's array/mapping dereferencing.",
-          "severity": "High"
-        },
-        {
-          "id": "1.7",
-          "item": "Panic Handling: Always handle returned errors from standard and custom functions — unhandled errors are bugs.",
-          "severity": "High"
-        },
-        {
-          "id": "1.8",
-          "item": "Error Handling: Confirm every error return value is checked.",
-          "severity": "High"
-        },
-        {
-          "id": "1.9",
-          "item": "Error Handling: Avoid silent error handling, especially in EndBlocker and module callbacks.",
-          "severity": "High"
-        },
-        {
-          "id": "1.10",
-          "item": "Error Handling: Check that non-expected errors/conditions are never suppressed.",
+          "item": "Check and handle every returned error; do not suppress failures.",
           "severity": "High"
         }
       ]
@@ -62,76 +37,61 @@
     {
       "id": 2,
       "category": "Cosmos Protocol/SDK-Specific Considerations",
-      "description": "Security considerations specific to Cosmos SDK protocol implementation",
+      "description": "ABCI/consensus flow and state-management requirements",
       "items": [
         {
           "id": "2.1",
-          "item": "ABCI Methods: ABCI methods (CheckTx, DeliverTx, BeginBlock, EndBlock, Commit, Query, PrepareProposal, ProcessProposal) must catch and log all panics, with no chain-stopping exceptions.",
+          "item": "Prevent panics in ABCI methods (CheckTx, DeliverTx, BeginBlock, EndBlock, Commit, Query, PrepareProposal, ProcessProposal, ExtendVote, VerifyVoteExtension).",
           "severity": "High"
         },
         {
           "id": "2.2",
-          "item": "BeginBlocker/EndBlocker: Ensure logic is deterministic and not computationally expensive (gas limits do not apply).",
+          "item": "Keep BeginBlocker and EndBlocker handlers deterministic and bounded; gas does not constrain them.",
           "severity": "High"
         },
         {
           "id": "2.3",
-          "item": "BeginBlocker/EndBlocker: Heuristically evaluate for resource abuse vectors (DoS potential).",
+          "item": "Design the CheckTx handler to be lightweight; avoid expensive checks and implement replay protection in CheckTx.",
           "severity": "High"
         },
         {
           "id": "2.4",
-          "item": "CheckTx: Only lightweight, deterministic checks allowed.",
+          "item": "For queries marked module_query_safe, ensure determinism and track gas for high-computation queries.",
           "severity": "High"
         },
         {
           "id": "2.5",
-          "item": "CheckTx: Avoid resource-intensive validation not constrained by gas.",
+          "item": "Enforce gas limits in consensus: reject over-gas transactions in the DeliverTx handler (≤ v0.34) and ensure proposed blocks respect MaxGas with PrepareProposal/ProcessProposal handlers (≥ v0.37).",
           "severity": "High"
         },
         {
           "id": "2.6",
-          "item": "PrepareProposal/ProcessProposal: Respect MaxGas and MaxBytes constraints.",
+          "item": "In the PrepareProposal handler, enforce MaxBytes and any block gas limits; only the proposer executes it and it may be non-deterministic.",
           "severity": "High"
         },
         {
           "id": "2.7",
-          "item": "PrepareProposal/ProcessProposal: PrepareProposal (run only by proposer) may be non-deterministic, so take care that all effects are only candidate state.",
-          "severity": "Medium"
+          "item": "In the ProcessProposal handler, perform deterministic validation without mutating state; generally accept valid proposals.",
+          "severity": "High"
         },
         {
           "id": "2.8",
-          "item": "PrepareProposal/ProcessProposal: ProcessProposal should only validate, not alter persistent state, and must be deterministic.",
+          "item": "For the first block after InitChain (block height 1), propose an empty block when the gas meter is not reset to prevent app_hash mismatch.",
           "severity": "High"
         },
         {
           "id": "2.9",
-          "item": "InitChain: Gas meter must be reset at initialization. If not, ensure the first block after InitChain is empty to prevent gas calculation mismatches.",
+          "item": "Complete the PrepareProposal handler within TimeoutPropose to prevent nil prevotes and liveness loss.",
           "severity": "High"
         },
         {
           "id": "2.10",
-          "item": "Broadcast in Commit: Never call mempool operations (broadcast_tx_sync, etc.) from within the Commit handler to avoid deadlocks.",
+          "item": "Restrict state mutations to the FinalizeBlock handler and persist in the Commit handler; track the last successfully committed height for recovery.",
           "severity": "High"
         },
         {
           "id": "2.11",
-          "item": "Queries: For Cosmos SDK ≥v0.47: Use module_query_safe for state-machine-safe queries.",
-          "severity": "Medium"
-        },
-        {
-          "id": "2.12",
-          "item": "Queries: Ensure deterministic results and proper gas accounting for potentially expensive queries.",
-          "severity": "High"
-        },
-        {
-          "id": "2.13",
-          "item": "State Management: State must only change inside FinalizeBlock and persist in Commit. Any state mutation elsewhere is a red flag.",
-          "severity": "High"
-        },
-        {
-          "id": "2.14",
-          "item": "State Management: No calls in external APIs or hooks can mutate consensus state.",
+          "item": "Avoid broadcast_tx calls from the Commit handler to prevent deadlocks on mempool locks.",
           "severity": "High"
         }
       ]
@@ -143,47 +103,37 @@
       "items": [
         {
           "id": "3.1",
-          "item": "Ante Handlers: Ensure proper fee payment logic (no bypass/vulnerabilities).",
+          "item": "Ensure ante handler chain cannot be bypassed for fee payment or gas enforcement.",
           "severity": "High"
         },
         {
           "id": "3.2",
-          "item": "Ante Handlers: Check for gas accounting on nested/cross-module calls.",
+          "item": "Recursively inspect nested messages in the ante handlers (e.g., x/authz) to apply gas and fee rules to all inner messages.",
           "severity": "High"
         },
         {
           "id": "3.3",
-          "item": "Ante Handlers: Guard against Authz (authorization) manipulation or message wrapping that skips checks.",
+          "item": "Prevent bypass of Ethermint or custom ante handler logic that allows gas limit violations or incorrect fee deductions.",
           "severity": "High"
         },
         {
           "id": "3.4",
-          "item": "Errors and Codes: Each module must register errors with unique codespace and codes > 1.",
+          "item": "Register module errors with a unique codespace and codes greater than 1.",
           "severity": "Medium"
         },
         {
           "id": "3.5",
-          "item": "Errors and Codes: Avoid code reuse between modules.",
-          "severity": "Medium"
+          "item": "Configure the x/bank module's blocklist to prevent users from directly sending tokens to module account addresses (e.g., staking, distribution module accounts) which could break module invariants.",
+          "severity": "High"
         },
         {
           "id": "3.6",
-          "item": "Token & Address Handling: Blacklist internal/module addresses as token recipients via the x/bank module.",
+          "item": "Avoid bulk SendCoins that mask per-transfer failures; transfer per coin and verify each outcome, especially in Begin/EndBlock.",
           "severity": "High"
         },
         {
           "id": "3.7",
-          "item": "Token & Address Handling: Validate all transfers, especially bulk transfers.",
-          "severity": "High"
-        },
-        {
-          "id": "3.8",
-          "item": "Token & Address Handling: Prefer transferring coins one-by-one and verify each transfer. Avoid SendCoins batch functions that mask failure of individual sends.",
-          "severity": "High"
-        },
-        {
-          "id": "3.9",
-          "item": "Token & Address Handling: Ensure vesting logic can't halt chain on malformed accounts.",
+          "item": "Ensure vesting account handling does not allow chain halts.",
           "severity": "High"
         }
       ]
@@ -195,12 +145,12 @@
       "items": [
         {
           "id": "4.1",
-          "item": "Staking Module: Validate all fields in MsgCreateValidator (e.g., unique operator address, public keys, proper denom, valid commission rates).",
+          "item": "Validate MsgCreateValidator fields: unique operator address and consensus pubkey, correct bonding denom, valid commission parameters, and bounded description sizes.",
           "severity": "High"
         },
         {
           "id": "4.2",
-          "item": "Staking Module: Defend against front-running on validator creation.",
+          "item": "Mitigate misuse of another validator’s consensus public key and front-running during validator creation.",
           "severity": "High"
         },
         {
@@ -210,13 +160,8 @@
         },
         {
           "id": "4.4",
-          "item": "Inter-Blockchain Communication (IBC): Only trust privileged operations from known channels.",
+          "item": "Validate IBC packet contents to prevent spoofing, event hallucinations, or reentrancy-style issues before acting on them.",
           "severity": "High"
-        },
-        {
-          "id": "4.5",
-          "item": "Inter-Blockchain Communication (IBC): Consider Solo Machine clients and how they impact trust and permissions.",
-          "severity": "Medium"
         }
       ]
     },
@@ -227,17 +172,22 @@
       "items": [
         {
           "id": "5.1",
-          "item": "Vote Extensions Implementation: Never allow vote extension processing or validation to alter app state.",
+          "item": "Keep ExtendVote handler data out of consensus-critical state and validate before use.",
           "severity": "High"
         },
         {
           "id": "5.2",
-          "item": "Vote Extensions Implementation: Validate extensions on both proposal build (PrepareProposal) and vote verification (VerifyVoteExtension).",
+          "item": "Implement the VerifyVoteExtension handler deterministically with no side effects; accept invalid extensions and ignore them in application logic.",
           "severity": "High"
         },
         {
           "id": "5.3",
-          "item": "Vote Extensions Implementation: Watch for non-determinism and excessive size/latency in extensions.",
+          "item": "Filter invalid vote extensions when building proposals in the PrepareProposal handler, including those added after the +2/3 threshold.",
+          "severity": "High"
+        },
+        {
+          "id": "5.4",
+          "item": "Control vote extension sizes to limit added latency during block production.",
           "severity": "Medium"
         }
       ]
@@ -249,26 +199,30 @@
       "items": [
         {
           "id": "6.1",
-          "item": "sdk.Context Deprecation: Avoid use of sdk.Context global state in v0.52+; use appmodule.Environment.",
+          "item": "In Cosmos SDK v0.52+, avoid sdk.Context for consensus params; use the consensus module via appmodule.Environment.",
           "severity": "Medium"
         },
         {
           "id": "6.2",
-          "item": "Gas and Consensus Parameters: Always enforce gas rules in both mempool and consensus.",
-          "severity": "High"
+          "item": "Reduce BlockParams.MaxBytes from the 21 MB default if unnecessary to limit bandwidth and latency impacts.",
+          "severity": "Medium"
         },
         {
           "id": "6.3",
-          "item": "Gas and Consensus Parameters: Validate updates to consensus parameters (no accidental disabling of protections).",
+          "item": "When updating consensus parameters, set all related fields explicitly to avoid unintended defaults.",
+          "severity": "High"
+        },
+        {
+          "id": "6.4",
+          "item": "Validate secp256k1 public keys and signatures, including compressed formats (0x02/0x03 prefixes), and reject incompatible keys.",
+          "severity": "High"
+        },
+        {
+          "id": "6.5",
+          "item": "Account for multiple messages per transaction and ensure ante handlers process all embedded messages to enforce gas and fee rules.",
           "severity": "High"
         }
       ]
     }
-  ],
-  "notes": [
-    "This checklist should be reviewed before each major release",
-    "Pay special attention to items marked as critical for chain security",
-    "Consider this checklist in conjunction with your specific use case requirements",
-    "Regular audits should include verification of these security measures"
   ]
 }
