@@ -1,0 +1,318 @@
+{
+  "title": "All dApp Security Checklist",
+  "description": "Actionable cross-platform dApp security checks covering key/seed management, mobile/web/extension/desktop clients, backend and infrastructure among others",
+  "categories": [
+    {
+      "id": 1,
+      "category": "General Security Checks",
+      "description": "Foundational security across key generation, storage, nodes, servers, and codebase",
+      "items": [
+        { "id": "1.1", "item": "Generate seed phrases/private keys using secure randomness (CSPRNG)", "severity": "High" },
+        { "id": "1.2", "item": "Encrypt seed phrases/private keys at rest with industry-standard algorithms", "severity": "High" },
+        { "id": "1.3", "item": "Store sensitive keys in secure storage appropriate to platform (e.g., Keychain/Keystore)", "severity": "High" },
+        { "id": "1.4", "item": "Connect only to reputable blockchain nodes; validate responses and handle failures gracefully", "severity": "Medium" },
+        { "id": "1.5", "item": "Gate custom node configuration; warn users of risks and disable by default", "severity": "Low" },
+        { "id": "1.6", "item": "Document any centralized server use and minimize transmitted data", "severity": "Low" },
+        { "id": "1.7", "item": "Encrypt sensitive server-side data and enforce strict access controls", "severity": "Medium" },
+        { "id": "1.8", "item": "Enforce strong password policy and require 2FA or PIN for sensitive operations", "severity": "Medium" },
+        { "id": "1.9", "item": "Continuously audit and update third-party libraries; remove vulnerable packages", "severity": "Medium" },
+        { "id": "1.10", "item": "Scan codebase for secret leaks (API keys, private keys) and fix findings", "severity": "High" },
+        { "id": "1.11", "item": "Use TLS for all server communications and enforce HTTPS everywhere", "severity": "High" }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "Mobile and Wallet Specific Checks",
+      "description": "Hardening measures for mobile apps and wallet clients",
+      "items": [
+        { "id": "2.1", "item": "Restrict screenshots for sensitive views (seed, keys)", "severity": "Medium" },
+        { "id": "2.2", "item": "Detect jailbroken/rooted devices and restrict sensitive features", "severity": "Medium" },
+        { "id": "2.3", "item": "Implement certificate/SSL pinning to prevent MitM", "severity": "High" },
+        { "id": "2.4", "item": "Avoid logging sensitive data; scrub logs and crash reports", "severity": "Medium" },
+        { "id": "2.5", "item": "Harden deep links/intents against misuse and validation bypass", "severity": "Medium" },
+        { "id": "2.6", "item": "Apply code obfuscation to hinder reverse engineering", "severity": "Low" },
+        { "id": "2.7", "item": "Enable anti-debugging/tamper protections", "severity": "Low" },
+        { "id": "2.8", "item": "Detect and block repackaged or tampered app builds", "severity": "Medium" },
+        { "id": "2.9", "item": "Use secure iOS Keychain/Android Keystore attributes and manage persistence carefully", "severity": "High" },
+        { "id": "2.10", "item": "Disable custom keyboards for sensitive inputs", "severity": "Low" },
+        { "id": "2.11", "item": "Load external content in WebViews securely with restricted settings", "severity": "Medium" },
+        { "id": "2.12", "item": "Review decompilation findings and minimize requested permissions", "severity": "Low" },
+        { "id": "2.13", "item": "Use secure data-at-rest storage and key wrapping on device", "severity": "Medium" },
+        { "id": "2.14", "item": "Ensure backups are encrypted; test secure recovery flows", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Web Wallet Specific Checks",
+      "description": "Browser-based wallet hardening and web security controls",
+      "items": [
+        { "id": "3.1", "item": "Mitigate XSS and clickjacking with sanitization, CSP, and frame busting", "severity": "High" },
+        { "id": "3.2", "item": "Deploy a strict Content Security Policy tailored to app needs", "severity": "Medium" },
+        { "id": "3.3", "item": "Prevent open redirects and HTML injection via strict input validation", "severity": "Medium" },
+        { "id": "3.4", "item": "Use secure cookies and CSRF protections where applicable", "severity": "Medium" },
+        { "id": "3.5", "item": "Configure CORS to allow only trusted origins", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "Extension Wallet Specific Checks",
+      "description": "Security for browser extensions and site communications",
+      "items": [
+        { "id": "4.1", "item": "Minimize requested extension permissions to least privilege", "severity": "Medium" },
+        { "id": "4.2", "item": "Secure message passing between websites and the extension", "severity": "Medium" },
+        { "id": "4.3", "item": "Harden content/background scripts against XSS and data exfiltration", "severity": "High" },
+        { "id": "4.4", "item": "Verify message origin and enforce strict allowlists", "severity": "High" }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "Electron (Desktop) Wallet Specific Checks",
+      "description": "Desktop app hardening for Electron-based wallets",
+      "items": [
+        { "id": "5.1", "item": "Use a current, patched Electron version", "severity": "Medium" },
+        { "id": "5.2", "item": "Avoid remote content loading or sandbox and validate strictly", "severity": "Medium" },
+        { "id": "5.3", "item": "Disable nodeIntegration and enable contextIsolation, sandbox, and webSecurity", "severity": "High" },
+        { "id": "5.4", "item": "Apply an effective CSP across BrowserWindows", "severity": "Medium" },
+        { "id": "5.5", "item": "Secure preload scripts; avoid dangerous APIs and validate inputs", "severity": "Medium" },
+        { "id": "5.6", "item": "Validate and sandbox external link handling (e.g., openExternal)", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "Server-Side Security Checks",
+      "description": "Backend hardening against common web vulnerabilities",
+      "items": [
+        { "id": "6.1", "item": "Implement robust authentication and authorization controls", "severity": "High" },
+        { "id": "6.2", "item": "Evaluate KYC processes for effectiveness and data protection", "severity": "Low" },
+        { "id": "6.3", "item": "Test for race conditions and fix cloud misconfigurations", "severity": "Medium" },
+        { "id": "6.4", "item": "Harden and patch web server configuration", "severity": "Medium" },
+        { "id": "6.5", "item": "Prevent IDOR by enforcing object-level authorization checks", "severity": "High" },
+        { "id": "6.6", "item": "Mitigate SSRF via allowlists and metadata protection", "severity": "High" },
+        { "id": "6.7", "item": "Validate file uploads (type, size) and store safely", "severity": "Medium" },
+        { "id": "6.8", "item": "Prevent SQL/command/template injections with parameterization and validation", "severity": "High" },
+        { "id": "6.9", "item": "Block arbitrary file read/write via strict path handling and sandboxing", "severity": "High" },
+        { "id": "6.10", "item": "Fix business logic flaws and enforce rate limiting/abuse controls", "severity": "Medium" },
+        { "id": "6.11", "item": "Harden against DoS with quotas, timeouts, and backpressure", "severity": "Medium" },
+        { "id": "6.12", "item": "Eliminate information leakage from headers, errors, and debug endpoints", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "Environment Setup",
+      "description": "Controlled testing and secure handling of sensitive data during analysis",
+      "items": [
+        { "id": "7.1", "item": "Use a segregated, controlled testing environment for consistent results", "severity": "Low" },
+        { "id": "7.2", "item": "Regularly back up test data and ensure integrity checks", "severity": "Low" },
+        { "id": "7.3", "item": "Leverage VMs/sandboxes to emulate varied scenarios securely", "severity": "Low" },
+        { "id": "7.4", "item": "Validate encryption standards for private keys and seed phrases", "severity": "High" },
+        { "id": "7.5", "item": "Ensure secure storage/handling of sensitive keys throughout lifecycle", "severity": "High" },
+        { "id": "7.6", "item": "Assess and mitigate memory extraction risks during runtime", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "Cryptography and Blockchain Integration",
+      "description": "Alignment with encryption standards and protocol integration",
+      "items": [
+        { "id": "8.1", "item": "Adhere to current industry-standard encryption protocols", "severity": "Medium" },
+        { "id": "8.2", "item": "Review blockchain protocol integrations for consistency and security", "severity": "Medium" },
+        { "id": "8.3", "item": "Apply cryptographic hashes to ensure data integrity where required", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "Authentication and Authorization Checks",
+      "description": "Identity verification, permissions, and sessions",
+      "items": [
+        { "id": "9.1", "item": "Strengthen identity verification and KYC alignment where applicable", "severity": "Low" },
+        { "id": "9.2", "item": "Enforce role-based permissions and least privilege", "severity": "High" },
+        { "id": "9.3", "item": "Harden session management against fixation, hijacking, and replay", "severity": "High" }
+      ]
+    },
+    {
+      "id": 10,
+      "category": "Smart Contracts (Contracts, Accounts, Scripts)",
+      "description": "Contract code quality, gas efficiency, and deployment processes",
+      "items": [
+        { "id": "10.1", "item": "Conduct thorough smart contract code review for vulnerabilities", "severity": "High" },
+        { "id": "10.2", "item": "Analyze and optimize gas usage where feasible", "severity": "Low" },
+        { "id": "10.3", "item": "Review deployment processes and scripts for safety and reproducibility", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 11,
+      "category": "Deploy Scripts",
+      "description": "Security of deployment automation and scripts",
+      "items": [
+        { "id": "11.1", "item": "Audit deploy scripts for secrets exposure and unsafe operations", "severity": "Medium" },
+        { "id": "11.2", "item": "Ensure automated deployments are consistent, secure, and reliable", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 12,
+      "category": "Hardware Wallet Integration",
+      "description": "Secure connections to hardware wallets and key management",
+      "items": [
+        { "id": "12.1", "item": "Harden integration paths to hardware wallets (transport and UX)", "severity": "Medium" },
+        { "id": "12.2", "item": "Review key management processes for mnemonics, private keys, and APIs", "severity": "High" }
+      ]
+    },
+    {
+      "id": 13,
+      "category": "Swap Extensions",
+      "description": "Security for optional swap functionality",
+      "items": [
+        { "id": "13.1", "item": "Audit swap extensions for security concerns", "severity": "Medium" },
+        { "id": "13.2", "item": "Validate integration of swap extensions with the dApp core", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 14,
+      "category": "Structure and Configuration Check",
+      "description": "Architecture, configuration, and source control practices",
+      "items": [
+        { "id": "14.1", "item": "Review application architecture for security implications", "severity": "Medium" },
+        { "id": "14.2", "item": "Secure configuration files and management workflows", "severity": "Medium" },
+        { "id": "14.3", "item": "Harden version control usage and protect secrets in Git", "severity": "Medium" },
+        { "id": "14.4", "item": "Audit codebase for outdated libraries and insecure practices", "severity": "Medium" },
+        { "id": "14.5", "item": "Run dependency vulnerability scans and update regularly", "severity": "Medium" },
+        { "id": "14.6", "item": "Review language module security (e.g., npm, Go) and lock versions", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 15,
+      "category": "Containers and Orchestration",
+      "description": "Container and orchestrator hardening",
+      "items": [
+        { "id": "15.1", "item": "Harden container images and drop unnecessary capabilities", "severity": "Medium" },
+        { "id": "15.2", "item": "Secure orchestration configs (secrets, network policies, RBAC)", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 16,
+      "category": "Chains, Scripts, and Oracles",
+      "description": "Secure interactions across blockchains, scripts, and oracle integrations",
+      "items": [
+        { "id": "16.1", "item": "Harden blockchain interaction flows across supported chains", "severity": "Medium" },
+        { "id": "16.2", "item": "Audit scripts used by the dApp for security issues", "severity": "Medium" },
+        { "id": "16.3", "item": "Validate oracle integrations and protect against manipulation", "severity": "High" }
+      ]
+    },
+    {
+      "id": 17,
+      "category": "Consensus Mechanism Evaluation Checks",
+      "description": "Assessment of MPC/TSS and related consensus components",
+      "items": [
+        { "id": "17.1", "item": "Review MPC/TSS component design and threat model", "severity": "High" },
+        { "id": "17.2", "item": "Validate TSS attestations and security guarantees", "severity": "High" }
+      ]
+    },
+    {
+      "id": 18,
+      "category": "View and Component Analysis",
+      "description": "Frontend and UI security considerations",
+      "items": [
+        { "id": "18.1", "item": "Assess frontend components for XSS, injection, and unsafe sinks", "severity": "High" },
+        { "id": "18.2", "item": "Harden UI against spoofing and state desync issues", "severity": "Medium" },
+        { "id": "18.3", "item": "Run automated security scans for common web vulnerabilities", "severity": "Medium" },
+        { "id": "18.4", "item": "Perform manual security review of critical UI flows", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 19,
+      "category": "Backend and Infrastructure",
+      "description": "Core backend components and HSM/validator integrations",
+      "items": [
+        { "id": "19.1", "item": "Harden API gateway with authentication, quotas, and input validation", "severity": "Medium" },
+        { "id": "19.2", "item": "Secure database interfaces (queries, migrations, secrets management)", "severity": "High" },
+        { "id": "19.3", "item": "Evaluate core packages (e.g., vault) for vulnerabilities", "severity": "Medium" },
+        { "id": "19.4", "item": "Verify secure Cloud-HSM integrations and key operations", "severity": "High" },
+        { "id": "19.5", "item": "Harden coordinator and validator services against compromise", "severity": "High" }
+      ]
+    },
+    {
+      "id": 20,
+      "category": "Endpoint and Contract Interfaces",
+      "description": "Security of exposed endpoints and smart contract interfaces",
+      "items": [
+        { "id": "20.1", "item": "Assess HTTP/WebSocket endpoints and enforce authentication where needed", "severity": "Medium" },
+        { "id": "20.2", "item": "Review smart contract interfaces for unsafe methods and access control gaps", "severity": "High" }
+      ]
+    },
+    {
+      "id": 21,
+      "category": "Additional Components",
+      "description": "Security for consoles, background services, and processes",
+      "items": [
+        { "id": "21.1", "item": "Secure web-based management consoles (authN, audit, network limits)", "severity": "Medium" },
+        { "id": "21.2", "item": "Harden background services and jobs with least privilege", "severity": "Medium" },
+        { "id": "21.3", "item": "Document and secure operational processes for the dApp", "severity": "Low" }
+      ]
+    },
+    {
+      "id": 22,
+      "category": "Comprehensive Testing",
+      "description": "Static, dynamic, and penetration testing",
+      "items": [
+        { "id": "22.1", "item": "Run static analysis to identify code-level vulnerabilities", "severity": "Medium" },
+        { "id": "22.2", "item": "Perform dynamic analysis against running services and UI", "severity": "Medium" },
+        { "id": "22.3", "item": "Conduct penetration testing focused on the dApp frontend", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 23,
+      "category": "Wallet Security",
+      "description": "Key management, transaction, and address safety",
+      "items": [
+        { "id": "23.1", "item": "Test secure generation, storage, and distribution of private keys", "severity": "High" },
+        { "id": "23.2", "item": "Validate transaction signing/broadcast and replay protection", "severity": "High" },
+        { "id": "23.3", "item": "Review address generation/verification for uniqueness and correctness", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 24,
+      "category": "Configuration and Node Setup",
+      "description": "Operational checks for transaction acceptance and node consensus",
+      "items": [
+        { "id": "24.1", "item": "Verify configurations enforce required waiting period before accepting transactions", "severity": "Low" },
+        { "id": "24.2", "item": "Ensure multiple nodes are present and agree on transaction validity", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 25,
+      "category": "Asset Handling and Indexing",
+      "description": "Transfer flows, refunds, and transaction indexing",
+      "items": [
+        { "id": "25.1", "item": "Review asset transfer flows for rate changes and user refund paths", "severity": "Medium" },
+        { "id": "25.2", "item": "Verify continuous transaction indexing and prioritize refund handling", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 26,
+      "category": "Bridge Business Model and Security Measures",
+      "description": "Controls for locking/minting models and operational security",
+      "items": [
+        { "id": "26.1", "item": "Review locking/minting model and exchange rate risk mitigation", "severity": "Medium" },
+        { "id": "26.2", "item": "Keep minimal funds in cold wallets; verify operational procedures", "severity": "High" },
+        { "id": "26.3", "item": "Assess relayer consensus and private key storage security", "severity": "High" },
+        { "id": "26.4", "item": "Confirm TSS runs in an attested environment and targets correct chains", "severity": "High" },
+        { "id": "26.5", "item": "Validate signature and blockheader verification for bridge transactions", "severity": "High" },
+        { "id": "26.6", "item": "Deploy monitoring with ability to freeze bridge on anomalies", "severity": "High" },
+        { "id": "26.7", "item": "Evaluate collateral requirements for third-party participants", "severity": "Medium" },
+        { "id": "26.8", "item": "Use checkpoint blocks to correlate and finalize transactions", "severity": "Medium" },
+        { "id": "26.9", "item": "Integrate additional oracles for transaction verification where applicable", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 27,
+      "category": "User Control and Proofs",
+      "description": "User address control verification and proof storage",
+      "items": [
+        { "id": "27.1", "item": "Verify user control over addresses on target networks", "severity": "Medium" },
+        { "id": "27.2", "item": "Store transaction proofs redundantly for durability", "severity": "Low" }
+      ]
+    }
+  ]
+}
+
+
