@@ -1,0 +1,14 @@
+{
+  "title": "GDPR, CCPA, and Data Privacy Checklist",
+  "description": "GDPR, CCPA, and Data Privacy Checklist for compliance and governance assessments",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Coming Soon",
+      "description": "This checklist is under development",
+      "items": [
+        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive GDPR, CCPA, and data privacy guidelines", "severity": "Info" }
+      ]
+    }
+  ]
+}

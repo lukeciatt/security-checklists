@@ -1,0 +1,14 @@
+{
+  "title": "Mobile API Security",
+  "description": "Mobile API Security checklist for mobile security assessments",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Coming Soon",
+      "description": "This checklist is under development",
+      "items": [
+        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive mobile API security guidelines", "severity": "Info" }
+      ]
+    }
+  ]
+}

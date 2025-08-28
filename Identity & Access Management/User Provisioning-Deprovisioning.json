@@ -1,0 +1,14 @@
+{
+  "title": "User Provisioning/Deprovisioning",
+  "description": "User Provisioning/Deprovisioning checklist for identity and access management assessments",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Coming Soon",
+      "description": "This checklist is under development",
+      "items": [
+        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive user provisioning and deprovisioning guidelines", "severity": "Info" }
+      ]
+    }
+  ]
+}

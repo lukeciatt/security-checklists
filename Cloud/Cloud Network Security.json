@@ -1,0 +1,14 @@
+{
+  "title": "Cloud Network Security",
+  "description": "Cloud Network Security checklist for cloud security assessments",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Coming Soon",
+      "description": "This checklist is under development",
+      "items": [
+        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive cloud network security guidelines", "severity": "Info" }
+      ]
+    }
+  ]
+}

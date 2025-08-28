@@ -1,0 +1,14 @@
+{
+  "title": "Supply Chain Security",
+  "description": "Supply Chain Security checklist for container security assessments",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Coming Soon",
+      "description": "This checklist is under development",
+      "items": [
+        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive supply chain security guidelines", "severity": "Info" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Privileged Access Management",
+  "description": "Privileged Access Management checklist for identity and access management assessments",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Coming Soon",
+      "description": "This checklist is under development",
+      "items": [
+        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive privileged access management guidelines", "severity": "Info" }
+      ]
+    }
+  ]
+}

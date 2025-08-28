@@ -1,0 +1,14 @@
+{
+  "title": "Network Segmentation and Monitoring",
+  "description": "Network Segmentation and Monitoring checklist for infrastructure and network security assessments",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Coming Soon",
+      "description": "This checklist is under development",
+      "items": [
+        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive network segmentation and monitoring guidelines", "severity": "Info" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Data Protection & Storage Security",
+  "description": "Data Protection & Storage Security checklist for cloud security assessments",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Coming Soon",
+      "description": "This checklist is under development",
+      "items": [
+        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive data protection and storage security guidelines", "severity": "Info" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Container Image Scanning",
+  "description": "Container Image Scanning checklist for container security assessments",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Coming Soon",
+      "description": "This checklist is under development",
+      "items": [
+        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive container image scanning guidelines", "severity": "Info" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "title": "SIEM Deployment",
+  "description": "SIEM Deployment checklist for incident response and monitoring assessments",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Coming Soon",
+      "description": "This checklist is under development",
+      "items": [
+        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive SIEM deployment guidelines", "severity": "Info" }
+      ]
+    }
+  ]
+}

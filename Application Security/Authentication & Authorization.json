@@ -1,0 +1,14 @@
+{
+  "title": "Authentication & Authorization",
+  "description": "Authentication & Authorization checklist for application security assessments",
+  "categories": [
+    {
+      "id": 1,
+      "category": "Coming Soon",
+      "description": "This checklist is under development",
+      "items": [
+        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive authentication and authorization guidelines", "severity": "Info" }
+      ]
+    }
+  ]
+}
