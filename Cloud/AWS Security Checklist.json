@@ -101,7 +101,7 @@
         },
         {
           "id": "2.9",
-          "item": "Enable VPC Flow Logs to capture information about IP traffic going to and from network interfaces in your VPC",
+          "item": "Enable VPC Flow Logs to capture Optionalrmation about IP traffic going to and from network interfaces in your VPC",
           "severity": "Medium"
         }
       ]

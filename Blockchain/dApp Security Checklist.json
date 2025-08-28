@@ -93,7 +93,7 @@
         { "id": "6.9", "item": "Block arbitrary file read/write via strict path handling and sandboxing", "severity": "High" },
         { "id": "6.10", "item": "Fix business logic flaws and enforce rate limiting/abuse controls", "severity": "Medium" },
         { "id": "6.11", "item": "Harden against DoS with quotas, timeouts, and backpressure", "severity": "Medium" },
-        { "id": "6.12", "item": "Eliminate information leakage from headers, errors, and debug endpoints", "severity": "Medium" }
+        { "id": "6.12", "item": "Eliminate Optionalrmation leakage from headers, errors, and debug endpoints", "severity": "Medium" }
       ]
     },
     {
