@@ -4,11 +4,76 @@
   "categories": [
     {
       "id": 1,
-      "category": "Coming Soon",
-      "description": "This checklist is under development",
+      "category": "Inventory & Tracking",
+      "description": "Tracking all third-party dependencies and packages in use.",
       "items": [
-        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive dependency and package security guidelines", "severity": "Optional" }
+        { "id": "1.1", "item": "Maintain a Software Bill of Materials (SBOM) covering all direct and transitive dependencies.", "severity": "High" },
+        { "id": "1.2", "item": "Record key details for all dependencies: name, version, license, and known vulnerabilities.", "severity": "High" },
+        { "id": "1.3", "item": "Keep detailed historical records of dependency changes and updates.", "severity": "High" },
+        { "id": "1.4", "item": "Use automated tools (Syft, CycloneDX) to generate and maintain inventory.", "severity": "Medium" },
+        { "id": "1.5", "item": "Tag and categorize dependencies by criticality and business impact.", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "Vulnerability Management",
+      "description": "Detecting and responding to vulnerabilities in dependencies.",
+      "items": [
+        { "id": "2.1", "item": "Automate vulnerability scans (Snyk, Dependabot, OWASP Dependency-Check).", "severity": "High" },
+        { "id": "2.2", "item": "Integrate automated scans in CI/CD pipelines and perform pre-commit checks.", "severity": "High" },
+        { "id": "2.3", "item": "Conduct daily scans for critical dependencies, weekly for all systems.", "severity": "High" },
+        { "id": "2.4", "item": "Monitor security advisories and CVEs relevant to your stack in real-time.", "severity": "High" },
+        { "id": "2.5", "item": "Define and document a clear process for vulnerability triage and remediation.", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Dependency Approval & Evaluation",
+      "description": "Ensuring new dependencies meet security standards before adoption.",
+      "items": [
+        { "id": "3.1", "item": "Assess repository health and maintainer profile for activity, contributors, and release frequency.", "severity": "High" },
+        { "id": "3.2", "item": "Review license compatibility, security policy, and history of vulnerabilities.", "severity": "High" },
+        { "id": "3.3", "item": "Require initial integration testing and code quality checks in isolated environments.", "severity": "Medium" },
+        { "id": "3.4", "item": "Ensure the dependency has clear documentation and provenance from reputable sources.", "severity": "Medium" },
+        { "id": "3.5", "item": "Assess dependency popularity and history of community or vendor support.", "severity": "Low" },
+        { "id": "3.6", "item": "Reject dependencies that lack upstream security alerting or coordinated issue response.", "severity": "High" }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "Version & Update Control",
+      "description": "Managing dependency versions and updates to prevent supply chain attacks.",
+      "items": [
+        { "id": "4.1", "item": "Pin and freeze exact versions using lock files; avoid loose versioning.", "severity": "High" },
+        { "id": "4.2", "item": "Document all dependency changes and require dual approval for critical updates.", "severity": "High" },
+        { "id": "4.3", "item": "Automate patch/minor updates, require formal approvals for major updates.", "severity": "Medium" },
+        { "id": "4.4", "item": "Enable automated rollback if an update introduces breakage or vulnerabilities.", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "Supply Chain & Build Pipeline Security",
+      "description": "Protecting source, build environments, and artifacts.",
+      "items": [
+        { "id": "5.1", "item": "Enforce RBAC and limit package installation to authorized personnel.", "severity": "High" },
+        { "id": "5.2", "item": "Validate package integrity via digital signatures and hash checks before use.", "severity": "High" },
+        { "id": "5.3", "item": "Use ephemeral, isolated build environments for artifact creation.", "severity": "High" },
+        { "id": "5.4", "item": "Digitally sign all build outputs and store them in secured, immutable repositories.", "severity": "High" },
+        { "id": "5.5", "item": "Maintain an access log for all build infrastructure and artifact access events.", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "Containment & Isolation",
+      "description": "Reducing the blast radius of compromised dependencies.",
+      "items": [
+        { "id": "6.1", "item": "Use containerization to isolate services and their dependencies.", "severity": "High" },
+        { "id": "6.2", "item": "Enforce read-only file systems and network segmentation in containers.", "severity": "High" },
+        { "id": "6.3", "item": "Run untrusted dependencies in sandboxes and monitor resource usage.", "severity": "Medium" },
+        { "id": "6.4", "item": "Set up automated alerts and thresholds for suspicious containment breaches.", "severity": "Medium" },
+        { "id": "6.5", "item": "Restrict runtime privileges for third-party dependencies to the absolute minimum.", "severity": "High" }
       ]
     }
   ]
 }
+
