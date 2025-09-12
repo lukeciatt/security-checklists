@@ -1,14 +1,104 @@
 {
-  "title": "Secure CI/CD Pipeline Checklists",
-  "description": "Secure CI/CD Pipeline Checklists for CI/CD and DevSecOps assessments",
+  "title": "Secure CI/CD Pipeline",
+  "description": "Security checklist for a secure CI/CD pipeline, derived from leading industry sources in 2025",
   "categories": [
     {
       "id": 1,
-      "category": "Coming Soon",
-      "description": "This checklist is under development",
+      "category": "Access Control and Identity Management",
+      "description": "Ensure robust authentication, granular permissions, and identity safeguards across the pipeline.",
       "items": [
-        { "id": "1.1", "item": "Coming Soon - This checklist is being developed and will contain comprehensive secure CI/CD pipeline guidelines", "severity": "Optional" }
+        { "id": "1.1", "item": "Review and audit permissions for human and machine identities regularly", "severity": "Medium" },
+        { "id": "1.2", "item": "Enforce multi-factor authentication (MFA) for all users accessing the CI/CD pipeline", "severity": "High" },
+        { "id": "1.3", "item": "Monitor and log access attempts, alert on anomalous or unauthorized actions", "severity": "Medium" },
+        { "id": "1.4", "item": "Avoid the use of shared accounts; enforce unique identities for users/services", "severity": "Medium" },
+        { "id": "1.5", "item": "Revoke stale, unused, or former employee/service identities promptly", "severity": "High" },
+        { "id": "1.6", "item": "Implement strong access controls and role-based permissions for all CI/CD components", "severity": "High" }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "Pipeline Code Security and Integrity",
+      "description": "Secure code, configuration, and build artifacts with integrity verification and secure workflows.",
+      "items": [
+        { "id": "2.1", "item": "Use software composition analysis on open-source dependencies", "severity": "High" },
+        { "id": "2.2", "item": "Employ checksum and digital signatures for build artifacts", "severity": "Medium" },
+        { "id": "2.3", "item": "Scan IaC, config, and pipeline files for vulnerabilities and misconfigurations", "severity": "High" },
+        { "id": "2.4", "item": "Enforce mandatory approvals for all code changes (flow control)", "severity": "High" }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Secrets and Credentials Management",
+      "description": "Protect secrets and credentials by centralizing, rotating, and scanning for exposures.",
+      "items": [
+        { "id": "3.1", "item": "Audit and monitor secret usage (retrievals/usage logs)", "severity": "Medium" },
+        { "id": "3.2", "item": "Restrict access to secrets based on least-privilege policies", "severity": "High" },
+        { "id": "3.3", "item": "Store secrets (API keys, tokens, passwords) in an enterprise secrets manager", "severity": "High" },
+        { "id": "3.4", "item": "Scan all code, configs, and images for exposed or hardcoded secrets", "severity": "High" },
+        { "id": "3.5", "item": "Ensure secrets are never stored or transmitted in plaintext", "severity": "High" },
+        { "id": "3.6", "item": "Rotate secrets and credentials regularly as part of standard operations", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "Environment and Dependency Security",
+      "description": "Ensure isolation of environments, secure dependencies, and minimize attack propagation.",
+      "items": [
+        { "id": "4.1", "item": "Only use actively maintained and supported open-source libraries", "severity": "Medium" },
+        { "id": "4.2", "item": "Harden and patch build environments and agents", "severity": "High" },
+        { "id": "4.3", "item": "Prevent code movement between isolated environments except through validated processes", "severity": "Medium" },
+        { "id": "4.4", "item": "Isolate CI/CD environments (dev, test, staging, prod) using network segmentation and firewall rules", "severity": "High" }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "Monitoring, Auditing, and Runtime Protection",
+      "description": "Enable comprehensive monitoring, incident response, and protection throughout pipeline operation.",
+      "items": [
+        { "id": "5.1", "item": "Create alerting for suspicious or unauthorized activities across pipeline and workload hosts", "severity": "High" },
+        { "id": "5.2", "item": "Document incident response playbooks for CI/CD security events", "severity": "Medium" },
+        { "id": "5.3", "item": "Enable runtime protection tools (RASP, application monitoring) on deployed services", "severity": "Medium" },
+        { "id": "5.4", "item": "Integrate automated security scanning (IDS/IPS, vulnerability scanners) into CI/CD workflows", "severity": "High" }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "Resilience, Backup and Recovery",
+      "description": "Maintain operational continuity with robust patch, backup, and disaster recovery procedures.",
+      "items": [
+        { "id": "6.1", "item": "Document and update a disaster recovery plan for pipeline environments", "severity": "Medium" },
+        { "id": "6.2", "item": "Automate regular backup of CI/CD environments and code repositories", "severity": "Medium" },
+        { "id": "6.3", "item": "Automate patching of CI/CD tooling and infrastructure", "severity": "High" },
+        { "id": "6.4", "item": "Test and validate backup and recovery procedures periodically", "severity": "Medium" },
+        { "id": "6.5", "item": "Store backups in secure and geographically separate (offsite/cloud) locations", "severity": "Medium" },
+        { "id": "6.6", "item": "Conduct regular security audits and remediate discovered issues promptly", "severity": "Medium" }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "Data Protection and Encryption",
+      "description": "Ensure all sensitive data in the CI/CD lifecycle is encrypted in transit and at rest, minimize sensitive data exposure.",
+      "items": [
+        { "id": "7.1", "item": "Encrypt sensitive data at rest and in transit throughout the pipeline", "severity": "High" },
+        { "id": "7.2", "item": "Restrict access to encryption keys and audit their use", "severity": "Medium" },
+        { "id": "7.3", "item": "Apply strict encryption key management and rotation policies", "severity": "High" },
+        { "id": "7.4", "item": "Use industry-standard cryptographic algorithms and protocols only", "severity": "Medium" },
+        { "id": "7.5", "item": "Regularly test data protection controls for effectiveness", "severity": "Medium" },
+        { "id": "7.6", "item": "Ensure no plaintext credentials or secrets are logged or stored", "severity": "High" }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "Vulnerability and Patch Management",
+      "description": "Identify, prioritize, and remediate vulnerabilities in CI/CD tools, code, and dependencies.",
+      "items": [
+        { "id": "8.1", "item": "Maintain and monitor a vulnerability disclosure and remediation process", "severity": "Medium" },
+        { "id": "8.2", "item": "Ensure CI/CD systems and dependencies are patched promptly", "severity": "High" },
+        { "id": "8.3", "item": "Document patch management procedures and review their effectiveness regularly", "severity": "Medium" },
+        { "id": "8.4", "item": "Track and remediate vulnerabilities in base images and build agents", "severity": "Medium" },
+        { "id": "8.5", "item": "Prioritize and address critical vulnerabilities before promotion to production", "severity": "High" }
       ]
     }
   ]
 }
+
